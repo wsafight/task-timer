@@ -1,10 +1,10 @@
-import { ExecHandler, TimerOptions } from './interface';
-import { Timer } from './Timer';
+import { ExecHandler, TaskTimerOptions } from './interface';
+import { TaskTimer } from './TaskTimer';
 
-const createTimer = (handler: ExecHandler, opts: TimerOptions) => {
-  return new Timer(handler, opts);
+const createTaskTimer = (handler: ExecHandler, opts: TaskTimerOptions) => {
+  return new TaskTimer(handler, opts);
 };
 
-export { Timer, createTimer };
+export { TaskTimer, createTaskTimer };
 
-export default createTimer;
+export default createTaskTimer;

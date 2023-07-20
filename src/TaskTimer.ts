@@ -1,20 +1,20 @@
-import { ExecHandler, TimerOptions } from './interface';
+import { ExecHandler, TaskTimerOptions } from './interface';
 import { isPositiveNum } from './utils';
 
 const DEFAULT_SLEEP = 1000;
 
-const DEFAULT_OPTIONS: TimerOptions = {
+const DEFAULT_OPTIONS: TaskTimerOptions = {
   sleep: DEFAULT_SLEEP,
   loop: false,
   immediately: false,
 };
 
-class Timer {
+class TaskTimer {
   /** 函数句柄  */
   readonly handler?: (...rest: any[]) => void;
 
   /** 是否循环，循环几次 */
-  readonly loop: TimerOptions['loop'] = false;
+  readonly loop: TaskTimerOptions['loop'] = false;
 
   /** 配置 sleep 是否为函数 */
   readonly sleepFun?: (time: number) => number;
@@ -31,7 +31,7 @@ class Timer {
   /** 执行次数，stop 时候可能会清除数据 */
   time: number = 0;
 
-  constructor(handler: ExecHandler, options: TimerOptions) {
+  constructor(handler: ExecHandler, options: TaskTimerOptions) {
     const { sleep, loop, immediately } = { ...DEFAULT_OPTIONS, ...options };
     if (typeof handler === 'function') {
       this.handler = handler;
@@ -115,4 +115,4 @@ class Timer {
   }
 }
 
-export { Timer };
+export { TaskTimer };
